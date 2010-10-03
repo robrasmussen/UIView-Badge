@@ -1,0 +1,51 @@
+UIView+Badge
+==============
+
+A simple addition to UIView that allows any view to display a badge, similar to the
+badge Apple provides for UITabBarItem.
+
+Usage
+=====
+The Xcode project includes an example view controller. To use in your own project:
+
+1. Drag UIView+Badge.h and UIView+Badge.m into your project.
+
+2. Import the header file, and set the badge value via the <code>badge</code> accessor
+   on UIView.
+
+
+        #import <UIKit/UIKit.h>
+        #import "UIView+Badge.h"
+        
+        @implementation MyController
+        -(void)viewDidLoad {
+            self.button.badge.badgeColor = [UIColor orangeColor];
+            self.button.badge.badgeValue = 13;
+        }
+        @end
+
+  
+Note: Setting the badgeValue on a UIView's badge will cause it to be laid out. It's best
+to set all other display-related options that effect the display area (e.g. font) before
+setting the badgeValue.
+  
+Display Options
+===============
+
+The badge view has several properties that affect how it looks:
+
+1. <code>placement</code>: By default, the badge will be placed on the right side of the view, 
+   assuming there's room. Setting the placement to kBadgePlacementLeft or kBadgePlacementRight
+   allows you to be explicit about where the badge renders.
+
+2. <code>font</code>: The font the number inside the badge will use. The size of the badge
+   is adjusted for this.
+   
+3. <code>badgeColor</code>: The background color inside the badge.
+
+4. <code>outlineColor</code>: The color of the outline around the badge.
+
+5. <code>outlineWidth</code>: The width of the outline around the badge.
+
+6. <code>displayWhenZero</code>: The badge normally doesn't render if the badgeValue is zero.
+   This setting allows you to override that.
